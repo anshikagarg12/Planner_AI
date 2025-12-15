@@ -101,7 +101,8 @@ Anshika Garg
 AI Student | Exam-Oriented Projects | Learning by Building
 
 ---
-##📜 Disclaimer
+
+## 📜 Disclaimer
 
 This project was developed only for personal academic use.
 It is not a commercial product and is not intended to replace professional academic planning tools.
