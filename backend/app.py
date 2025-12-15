@@ -52,26 +52,22 @@ def extract():
 
 @app.route("/generate", methods=["POST"])
 def generate():
-    data = request.get_json()
-    topics = data.get("topics", "")
-    days = data.get("days", 0)
-
     print("🔥 /generate HIT")
+
+    data = request.json
+    topics = data.get("topics")
+    days = data.get("days")
+
     print("Days:", days)
     print("Topics:", topics)
 
-    # TEMP PLAN (Gemini optional)
-    plan = ""
-    for i in range(1, int(days) + 1):
-        plan += f"Day {i}:\n"
-        for topic in topics.split("\n"):
-            plan += f"- {topic.strip()}\n"
-        plan += "\n"
+    plan = generate_study_plan(topics, days)
 
-    # 👉 Uncomment later when Gemini is stable
-    # plan = generate_study_plan(topics, days)
+    print("📅 PLAN GENERATED:\n", plan)
 
-    return jsonify({"plan": plan})
+    return jsonify({
+        "plan": plan
+    })
 
 
 @app.route("/pdf", methods=["POST"])
